@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres-cron
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: test_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+    command: >
+      bash -c "apt update &&
+               apt install -y postgresql-13-cron &&
+               cp /usr/share/postgresql/postgresql.conf.sample /var/lib/postgresql/data/postgresql.conf.sample &&
+               docker-entrypoint.sh postgres -c 'config_file=/var/lib/postgresql/data/postgresql.conf'"
+
+volumes:
+  pgdata:
