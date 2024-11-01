@@ -162,4 +162,3 @@ To update a job’s schedule, unschedule it first and create a new job with the 
 
 ---
 
-This breakdown provides a complete, easy-to-follow guide to setting up and using `pg_cron` in a PostgreSQL 13 Docker container. Let me know if you need further adjustments!
