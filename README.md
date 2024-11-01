@@ -1,4 +1,3 @@
-Certainly! Here’s the full `README.md` in the format you provided, with each section clearly broken down.
 
 ---
 
